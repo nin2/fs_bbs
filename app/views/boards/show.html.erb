@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Country:</b>
+  <%= @board.country %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @board.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>

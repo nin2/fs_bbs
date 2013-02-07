@@ -1,0 +1,23 @@
+<h1>Listing country_areas</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @country_areas.each do |country_area| %>
+  <tr>
+    <td><%= country_area.name %></td>
+    <td><%= link_to 'Show', country_area %></td>
+    <td><%= link_to 'Edit', edit_country_area_path(country_area) %></td>
+    <td><%= link_to 'Destroy', country_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Country area', new_country_area_path %>
