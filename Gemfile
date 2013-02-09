@@ -40,4 +40,7 @@ gem 'debugger'
 # Authentication
 gem 'devise'
 
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 
