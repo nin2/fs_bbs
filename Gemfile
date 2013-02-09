@@ -43,4 +43,22 @@ gem 'devise'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem "bootstrap-sass"
+
+# jquery
+gem 'haml-rails'
+gem 'jquery-rails'
+
+
+# Automatic Test
+group :development, :test do
+    gem 'rspec-rails'
+    gem 'factory_girl_rails'
+    gem 'spork'
+    gem 'rb-fsevent'
+    gem 'guard-spork'
+    gem 'growl'
+    gem 'guard-rspec'
+    gem 'rb-fsevent', :require => false
+end
 
