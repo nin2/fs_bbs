@@ -1,14 +1,13 @@
 FsBbs::Application.routes.draw do
   devise_for :users
 
-  resources :comments
+  resources :users
 
+  resources :comments
 
   resources :boards
 
-
   resources :countries
-
 
   resources :country_areas
 
