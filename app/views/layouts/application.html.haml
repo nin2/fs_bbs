@@ -21,36 +21,55 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") FsBbs
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+          %a.btn.btn-navbar{:data_toggle => "collapse", "data-target" => ".nav-collapse"}
+          %a.brand{:href => "../"} Title
 
     .container
+      %header.jumbotron.subhead#overview
+        .row
+          .span3
+            <h1>
+            Logo
+            </h1>
+          .span7
+            %p.lead
+              description
+          .span2
+            Login
+      //%header.jumbotron.subhead#overview
+      //.navbar.navbar-fixed-top
+      //  .navbar-inner
+      //    .container
+      //      %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+      //        %span.icon-bar
+      //        %span.icon-bar
+      //        %span.icon-bar
+      //      %a.brand(href="#") FsBbs
+      //      .container.nav-collapse
+      //        %ul.nav
+      //          %li= link_to "Link 1", "/path1"
+      //          %li= link_to "Link 2", "/path2"
+      //          %li= link_to "Link 3", "/path3"
 
-      .row
-        .span9
-          = bootstrap_flash
-          = yield
-        .span3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
-    
-      %footer
-        %p &copy; Company 2012
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
-    = javascript_include_tag "application"
+      .container
+
+        .row
+          .span9
+            = bootstrap_flash
+            = yield
+          .span3
+            .well.sidebar-nav
+              %h3 Sidebar
+              %ul.nav.nav-list
+                %li.nav-header Sidebar
+                %li= link_to "Link 1", "/path1"
+                %li= link_to "Link 2", "/path2"
+                %li= link_to "Link 3", "/path3"
+      
+        %footer
+          %p &copy; Company 2012
+      /
+        Javascripts
+        \==================================================
+      / Placed at the end of the document so the pages load faster
+      = javascript_include_tag "application"

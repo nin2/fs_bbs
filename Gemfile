@@ -44,6 +44,7 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "bootstrap-sass"
+gem "bootswatch-rails"
 
 # jquery
 gem 'haml-rails'
