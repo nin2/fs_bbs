@@ -2,6 +2,7 @@ class CountriesController < ApplicationController
   # GET /countries
   # GET /countries.json
   def index
+    @country_areas = CountryArea.all
     @countries = Country.all
 
     respond_to do |format|

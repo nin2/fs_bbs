@@ -8,8 +8,8 @@ FsBbs::Application.routes.draw do
   resources :comments
 
   #resources :boards
-  match '/boards/cut/:country_id' => 'boards#cut', via: :get, as: :cut_board
-  match '/boards/:country_id' => 'boards#index', via: :get, as: :boards
+  match '/boards/cut/:country_id' => 'boards#cut'
+  match '/boards/index/:country_id' => 'boards#show'
 
   resources :countries
 

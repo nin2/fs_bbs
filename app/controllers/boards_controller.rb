@@ -1,9 +1,25 @@
 class BoardsController < ApplicationController
-  # GET /boards
-  # GET /boards.json
-  def index
-    @boards = Board.all
+  ## GET /boards
+  ## GET /boards.json
+  #def index
+  #  @boards = Board.all
 
+  #  respond_to do |format|
+  #    format.html # index.html.erb
+  #    format.json { render json: @boards }
+  #  end
+  #end
+
+  # GET /boards/:country_id
+  # GET /boards/:country_id.json
+  def index
+    @boards = Board.find_all_by_country_id(params[:country_id])
+
+    # jump to root if country_id is invalid
+    if @boards == nil
+        return redirect_to controller: :countries, action: :index
+    end
+                                           
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @boards }
@@ -12,14 +28,14 @@ class BoardsController < ApplicationController
 
   # GET /boards/1
   # GET /boards/1.json
-  def show
-    @board = Board.find(params[:id])
+  #def show
+  #  @board = Board.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @board }
-    end
-  end
+  #  respond_to do |format|
+  #    format.html # show.html.erb
+  #    format.json { render json: @board }
+  #  end
+  #end
 
   # GET /boards/new
   # GET /boards/new.json
@@ -30,6 +46,22 @@ class BoardsController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @board }
     end
+  end
+
+  # GET /boards/cut/:country_id
+  def cut
+      @board = Board.new
+      @country = Country.find_by_id(params[:country_id])
+
+      # jump to root if country_id is invalid
+      if @country == nil
+          return redirect_to controller: :countries, action: :index
+      end
+
+      respond_to do |format|
+          format.html
+          format.json { render json: @board }
+      end
   end
 
   # GET /boards/1/edit

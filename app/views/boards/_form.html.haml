@@ -2,7 +2,7 @@
   .control-group
     = f.label :country_id, :class => 'control-label'
     .controls
-      = f.number_field :country_id, :class => 'number_field'
+      = @country.name
   .control-group
     = f.label :title, :class => 'control-label'
     .controls
@@ -10,3 +10,4 @@
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), boards_path, :class => 'btn'
+
