@@ -10,6 +10,9 @@ FsBbs::Application.routes.draw do
   #resources :boards
   match '/boards/cut/:country_id' => 'boards#cut', via: :get, as: :cut_board
   match '/boards/:country_id' => 'boards#index', via: :get, as: :boards
+  match '/boards' => 'boards#create', via: :post
+  match '/boards/:country_id' => 'boards#create', via: :post
+  match '/boards/:id' => 'boards#show', via: :get, as: :board
 
   resources :countries
 

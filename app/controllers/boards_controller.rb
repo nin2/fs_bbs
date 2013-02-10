@@ -14,9 +14,10 @@ class BoardsController < ApplicationController
   # GET /boards/:country_id.json
   def index
     @boards = Board.find_all_by_country_id(params[:country_id])
+    @country = Country.find_by_id(params[:country_id])
 
     # jump to root if country_id is invalid
-    if @boards == nil
+    if @boards == nil or @country == nil
         return redirect_to controller: :countries, action: :index
     end
                                            
@@ -76,8 +77,8 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
-        format.html { redirect_to @board, notice: 'Board was successfully created.' }
-        format.json { render json: @board, status: :created, location: @board }
+        format.html { redirect_to @board, params => {:country_id => params[:country_id]}, notice: 'Board was successfully created.' }
+        format.json { render json: @board, params => {:country_id => params[:country_id]}, status: :created, location: @board }
       else
         format.html { render action: "new" }
         format.json { render json: @board.errors, status: :unprocessable_entity }

@@ -8,6 +8,7 @@
     .controls
       = f.text_field :title, :class => 'text_field'
   .form-actions
+    = f.hidden_field :country_id, :value => params[:country_id] if params[:country_id] != nil
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), boards_path, :class => 'btn'
 

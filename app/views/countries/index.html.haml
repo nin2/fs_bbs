@@ -1,7 +1,7 @@
 - model_class = Country
 .page-header
   /*%h1=t '.title', :default => model_class.model_name.human.pluralize*/
-  %h2 Choose Country:
+  %h2 Choose Country you want to talk about 
   - @country_areas.each do |country_area|
     = country_area.name
     %table.table.table-striped
@@ -11,5 +11,5 @@
       %tbody
         - Country.find_all_by_country_area_id(country_area.id).each do |country|
           %tr
-            %td= country.name
+            %td= link_to country.name, boards_path(country.id)
 
