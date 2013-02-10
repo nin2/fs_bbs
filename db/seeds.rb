@@ -18,9 +18,11 @@ ActiveRecord::Base.connection.tables.each do |table|
     ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
 end
 
+table_arr = ["CountryArea.csv", "Country.csv"]
 
 Dir.chdir(ROOT_CSV)
-Dir.glob(PATTERN) do |f|
+#Dir.glob(PATTERN) do |f|
+table_arr.each do |f|
   print "running #{f}...\n"
   flag_first = true
   table_str = f.slice(0, f.length - 4)
@@ -32,7 +34,7 @@ Dir.glob(PATTERN) do |f|
   CSV.foreach("#{f}", encoding: "Shift_JIS:UTF-8") do |row|
     if flag_first == true
       # シンボルに変換する
-      param_arr = row.collect {|v| v.to_sym}
+      param_arr = row.collect {|v| p "v = "+v.to_str; v.to_sym}
 
       flag_first = false
       next
