@@ -18,7 +18,7 @@
 @import "fontawesome";
 
 // Glyphicons
-//@import "twitter/bootstrap/sprites.less";
+@import "twitter/bootstrap/sprites.less";
 
 // Your custom LESS stylesheets goes here
 //
@@ -30,4 +30,7 @@
 //
 // Example:
 // @linkColor: #ff0000;
+
+//@import "./bootswatch/bootswatch";
+//@import "./bootswatch/variables";
 
