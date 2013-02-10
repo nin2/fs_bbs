@@ -37,28 +37,28 @@
           .span2
             Login
 
-        .subnav
-          .row
-            .span4
-              %ul.nav.nav-pills
-                // ぱんくずリストをここに書く
-                %li
-                  %a{:href => "#"} Home
-                %li
-                  %a{:href => "#"} Choose Country
+        .page-header
+          .subnav
+            .row
+              .span4
+                %ul.nav.nav-pills
+                  // ぱんくずリストをここに書く
+                  %li
+                    %a{:href => "#"} Home
+                  %li
+                    %a{:href => "#"} Choose Country
 
-            // 検索系
-            .span4.pull-right
-              %form
-                Search Country:
-                %input.input-medium.search-query{:type => "text"}
-                  %button.btn{:type => "submit"}
-                    %i.icon-search
+              // 検索系
+              .span4.pull-right
+                %form
+                  Search Country:
+                  %input.input-medium.search-query{:type => "text"}
+                    %button.btn{:type => "submit"}
+                      %i.icon-search
 
-      .row
-        .span12
-          = bootstrap_flash
-          = yield
+      .well
+        = bootstrap_flash
+        = yield
 
       %footer
         %p &copy; Company 2012
