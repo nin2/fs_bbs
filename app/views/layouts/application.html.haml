@@ -32,9 +32,9 @@
               = link_to :"Nindart", controller: :countries, action: :index
           .span7
             %h3.lead{:style => "font-size:20px;"}
-              Nindart is BBS for foreign student in Japan.
+              <b>Nindart</b> is BBS for <b>foreign student</b> living in Japan.
               %br
-              1.Choose your country　2.Enjoy!
+              First: Choose your country &nbsp; Second: Enjoy your conversation!
           .span2
             Login
 
@@ -45,13 +45,11 @@
                 %ul.nav.nav-pills
                   // ぱんくずリストをここに書く
                   %li
-                    %a{:href => "#"} Home
-                  %li
-                    %a{:href => "#"} Choose Country
+                    = render_crumbs 
 
               // 検索系
-              .span4.pull-right
-                %form
+              .span8.pull-right
+                %form{:style => "margin: 0;"}
                   Search Country:
                   %input.input-medium.search-query{:type => "text"}
                     %button.btn{:type => "submit"}

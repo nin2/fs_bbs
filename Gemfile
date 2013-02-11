@@ -48,7 +48,7 @@ gem "bootswatch-rails"
 
 gem "maxmertkit-rails"
 gem "kaminari"
-gem "crummy"
+gem "crummy", "~> 1.7.0"
 gem "font-awesome-rails"
 
 # jquery

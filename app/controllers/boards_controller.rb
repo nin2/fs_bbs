@@ -1,4 +1,7 @@
 class BoardsController < ApplicationController
+  add_crumb 'Board'
+  
+  
   ## GET /boards
   ## GET /boards.json
   #def index

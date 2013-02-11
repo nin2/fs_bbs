@@ -207,7 +207,7 @@ DEPENDENCIES
   bootstrap-sass
   bootswatch-rails
   coffee-rails (~> 3.2.1)
-  crummy
+  crummy (~> 1.7.0)
   debugger
   devise
   factory_girl_rails
