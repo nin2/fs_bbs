@@ -11,5 +11,5 @@
       %tbody
         - Country.find_all_by_country_area_id(country_area.id).each do |country|
           %tr
-            %td= link_to country.name, boards_path(country.id)
+            %td= link_to country.name, board_list_path(country.id)
 

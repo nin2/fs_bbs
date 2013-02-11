@@ -10,6 +10,24 @@ class CommentsController < ApplicationController
     end
   end
 
+  # GET /comments/:board_id
+  # GET /comments/:board_id.json
+  def list
+    @comments = Comment.find_all_by_board_id(params[:board_id])
+    @board = Board.find_by_id(params[:board_id])
+    @country = Country.find_by_id(@board.country_id)
+
+    # jump to root if country_id is invalid
+    if @comments == nil or @country == nil
+        return redirect_to controller: :countries, action: :index, notice: "URL Parameter is invalid."
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @comments }
+    end
+  end
+
   # GET /comments/1
   # GET /comments/1.json
   def show
@@ -26,6 +44,18 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
 
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @comment }
+    end
+  end
+
+  # GET /comments/post/:board_id
+  # GET /comments/post/:board_id.json
+  def post
+    @comment = Comment.new
+    @comment.board_id = params[:board_id]
+                                            
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }

@@ -5,11 +5,14 @@ FsBbs::Application.routes.draw do
 
   resources :users, only: [:edit, :pdate]
 
-  resources :comments, only: [:index, :show, :new, :create]
+  #resources :comments, only: [:index, :show, :new, :create]
+  match 'comments/list/:board_id' => 'comments#list', via: :get, as: :comment_list
+  match 'comments/new' => 'comments#new', via: :get, as: :new_comment
+  match 'comments/post/:board_id' => 'comments#post', via: :get, as: :post_comment
 
   #resources :boards
   match '/boards/cut/:country_id' => 'boards#cut', via: :get, as: :cut_board
-  match '/boards/:country_id' => 'boards#index', via: :get, as: :boards
+  match '/boards/list/:country_id' => 'boards#list', via: :get, as: :board_list
   match '/boards' => 'boards#create', via: :post
   match '/boards/:country_id' => 'boards#create', via: :post
   match '/boards/:id' => 'boards#show', via: :get, as: :board

@@ -10,9 +10,9 @@ class BoardsController < ApplicationController
   #  end
   #end
 
-  # GET /boards/:country_id
-  # GET /boards/:country_id.json
-  def index
+  # GET /boards/list/:country_id
+  # GET /boards/list/:country_id.json
+  def list
     @boards = Board.find_all_by_country_id(params[:country_id])
     @country = Country.find_by_id(params[:country_id])
 
@@ -50,6 +50,7 @@ class BoardsController < ApplicationController
   end
 
   # GET /boards/cut/:country_id
+  # GET /boards/cut/:country_id.json
   def cut
       @board = Board.new
       @country = Country.find_by_id(params[:country_id])
