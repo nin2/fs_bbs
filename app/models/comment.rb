@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
   belongs_to :board
   belongs_to :user
-  attr_accessible :content
+  attr_accessible :content, :board_id
 end

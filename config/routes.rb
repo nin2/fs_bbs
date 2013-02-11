@@ -7,7 +7,8 @@ FsBbs::Application.routes.draw do
 
   #resources :comments, only: [:index, :show, :new, :create]
   match 'comments/list/:board_id' => 'comments#list', via: :get, as: :comment_list
-  match 'comments/new' => 'comments#new', via: :get, as: :new_comment
+  match 'comments/new' => 'comments#new', via: :post, as: :new_comment
+  match 'comments/create' => 'comments#create', via: :post
   match 'comments/post/:board_id' => 'comments#post', via: :get, as: :post_comment
 
   #resources :boards
