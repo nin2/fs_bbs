@@ -46,6 +46,11 @@ gem "twitter-bootstrap-rails"
 gem "bootstrap-sass"
 gem "bootswatch-rails"
 
+gem "maxmertkit-rails"
+gem "kaminari"
+gem "crummy"
+gem "font-awesome-rails"
+
 # jquery
 gem 'haml-rails'
 gem 'jquery-rails'
