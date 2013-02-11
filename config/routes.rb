@@ -3,9 +3,9 @@ FsBbs::Application.routes.draw do
 
   devise_for :users
 
-  resources :users
+  resources :users, only: [:edit, :pdate]
 
-  resources :comments
+  resources :comments, only: [:index, :show, :new, :create]
 
   #resources :boards
   match '/boards/cut/:country_id' => 'boards#cut', via: :get, as: :cut_board
@@ -14,9 +14,9 @@ FsBbs::Application.routes.draw do
   match '/boards/:country_id' => 'boards#create', via: :post
   match '/boards/:id' => 'boards#show', via: :get, as: :board
 
-  resources :countries
+  resources :countries, only: [:index, :show]
 
-  resources :country_areas
+  resources :country_areas, only: [:index, :show]
 
 
   # The priority is based upon order of creation:

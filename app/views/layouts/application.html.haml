@@ -28,9 +28,8 @@
       %header.jumbotron.subhead#overview
         .row
           .span3
-            <h1>
-            Logo
-            </h1>
+            %h1
+              = link_to :Logo, controller: :countries, action: :index
           .span7
             %p.lead
               description
