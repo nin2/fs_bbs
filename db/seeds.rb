@@ -18,11 +18,11 @@ ActiveRecord::Base.connection.tables.each do |table|
     ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
 end
 
-table_arr = ["CountryArea.csv", "Country.csv"]
 
 Dir.chdir(ROOT_CSV)
 #Dir.glob(PATTERN) do |f|
-table_arr.each do |f|
+file_arr = ["CountryArea.csv", "Country.csv"]
+file_arr.each do |f|
   print "running #{f}...\n"
   flag_first = true
   table_str = f.slice(0, f.length - 4)
