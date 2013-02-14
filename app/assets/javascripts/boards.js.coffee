@@ -6,20 +6,19 @@
 $ ->
     $('#dialog-form').dialog 
         autoOpen: false
-        height: 300
-        width: 350
+        height: 230
+        width: 450
         modal: true
         buttons:
             "New Board": ->
                bValid = true
-               allFields.removeClass('ui-state-error')
-
+               #allFields.removeClass('ui-state-error')
+               $('#create_board_submit').trigger('click')
             Cancel: ->
                $(this).dialog("close")
-            Close: ->
-               allFields.val("").removeClass("ui-state-color")
 
     $("#create-user")
         .button()
         .click ->
-            $("dialog-form").dialog("open")
+            $("#dialog-form").dialog("open")
+

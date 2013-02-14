@@ -1,7 +1,6 @@
 class BoardsController < ApplicationController
   add_crumb 'Board'
   
-  
   ## GET /boards
   ## GET /boards.json
   #def index
@@ -85,7 +84,9 @@ class BoardsController < ApplicationController
         format.html { redirect_to board_list_path(@board), action: :list, notice: 'Board was successfully created.' }
         format.json { render json: @board, params => {:country_id => params[:country_id]}, action: :list, status: :created, location: @board }
       else
-        format.html { render action: "new" }
+        #format.html { render action: "new" }
+        @board.id = params[:board][:country_id]
+        format.html { redirect_to board_list_path(@board), action: :list, notice: 'Board was NOT created.' }
         format.json { render json: @board.errors, status: :unprocessable_entity }
       end
     end
