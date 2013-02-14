@@ -17,6 +17,21 @@
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
     %link(href="favicon.ico" rel="shortcut icon")
 
+    :javascript
+      $(function() {
+        function search() {
+          $('tr').each(function() {
+            if($(this).text().indexOf($('#search').val()) == -1) {
+              $(this).css("display", "none");
+              $("+td", this).css("display", "none");
+            } else {
+              $(this).css("display", "block");
+              $("+td", this).css("display", "block");
+            }
+          });
+        }
+      });
+
 
   %body
     //.navbar.navbar-fixed-top
@@ -52,9 +67,9 @@
               .span8.pull-right
                 %form{:style => "margin: 0;"}
                   Search Country:
-                  %input.input-medium.search-query{:type => "text"}
-                    %button.btn{:type => "submit"}
-                      %i.icon-search
+                  %input#search.input-medium.search-query{:type => "text", :oninput => "search()", :onkeyup => "search()", :onblur => "search()", :placeholder => "Search"}
+                    //%button.btn{:type => "submit"}
+                    //  %i.icon-search
 
       .well
         = bootstrap_flash

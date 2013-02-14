@@ -9,7 +9,17 @@
           = @country.name
         = image_tag @country.flag_image
     .pull-right
-      = link_to t('.new', :default => t("helpers.links.new")), cut_board_path, :class => 'btn btn-primary'
+      =# link_to t('.new', :default => t("helpers.links.new")), cut_board_path, :class => 'btn btn-primary'
+      = link_to "New Board", cut_board_path, :class => 'btn btn-primary', :id => 'create-user'
+
+// dialog form
+#dialog-form{:title => "Create new board"}
+  %p.validateTips All form fields are required.
+  %form
+    %fieldset
+      %label{:for=>"name"} Name
+      %input#name{:class=> "text ui-widget-content ui-corner-all", :type=>"text",:name=>"name"}
+    
 %table.table.table-striped
   %thead
     %tr
