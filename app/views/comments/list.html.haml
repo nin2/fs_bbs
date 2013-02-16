@@ -1,6 +1,34 @@
 - model_class = Comment
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
+  .row
+    .span6
+      -#%h2=t '.title', :default => model_class.model_name.human.pluralize
+      %h2
+        = @board.title
+        = image_tag(@country.flag_image)
+    .pull-right
+      =# link_to t('.new', :default => t("helpers.links.new")), post_comment_path(@board.id), :class => 'btn btn-primary'
+      =# link_to "Post Comment", post_comment_path(@board.id), :class => 'btn btn-primary'
+
+      <button class="btn btn-primary" id="post-comment">Post Comment</button>
+
+// dialog form
+= form_for Comment.new, :url => {:action => "create"}, :html => { :class => 'form-horizontal', :id => 'dialog-form', :title => 'Create new Comment' } do |f|
+  %p.validateTips All form fields are required.
+  //.control-group
+  //  = f.label :country_id, :class => 'control-label'
+  //  .controls
+  //    = @country.name
+  .control-group
+    = f.label :content, :class => 'control-label'
+    .controls
+      = f.text_area :content, :class => 'text_field text ui-widget-content ui-corner-all', :type => "text", :style => "width:379px;height:280px;"
+  .form-actions{:style => "display:none"}
+    = f.hidden_field :board_id, :value => params[:board_id] if params[:board_id] != nil
+    = f.submit nil, :class => 'btn btn-primary', :style => "display:none;", :id => "post_comment_submit"
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), comment_list_path(params[:board_id]), :class => 'btn', :style => "display:none;"
+
+
 %table.table.table-striped
   %thead
     %tr
@@ -17,5 +45,4 @@
           //= link_to t('.edit', :default => t("helpers.links.edit")), edit_comment_path(comment), :class => 'btn btn-mini'
           //= link_to t('.destroy', :default => t("helpers.links.destroy")), comment_list_path(comment), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), post_comment_path(@board.id), :class => 'btn btn-primary'
 

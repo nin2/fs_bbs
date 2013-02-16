@@ -3,13 +3,13 @@ FsBbs::Application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: [:edit, :pdate]
+  #resources :users
 
   #resources :comments, only: [:index, :show, :new, :create]
   match 'comments/list/:board_id' => 'comments#list', via: :get, as: :comment_list
   match 'comments/new' => 'comments#new', via: :post, as: :new_comment
   match 'comments/create' => 'comments#create', via: :post
-  match 'comments/post/:board_id' => 'comments#post', via: :get, as: :post_comment
+  match 'comments/post/:board_id' => 'comments#post', via: :post, as: :post_comment
 
   #resources :boards
   match '/boards/cut/:country_id' => 'boards#cut', via: :get, as: :cut_board

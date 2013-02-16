@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
   # GET /boards/list/:country_id
   # GET /boards/list/:country_id.json
   def list
-    @boards = Board.find_all_by_country_id(params[:country_id])
+    @boards = Board.find_all_by_country_id(params[:country_id], order: "created_at desc")
     @country = Country.find_by_id(params[:country_id])
 
     # jump to root if country_id is invalid

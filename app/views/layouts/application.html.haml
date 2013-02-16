@@ -11,6 +11,9 @@
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
+    = javascript_include_tag "countries" if controller.controller_name == "countries"
+    = javascript_include_tag "boards" if controller.controller_name == "boards"
+    = javascript_include_tag "comments" if controller.controller_name == "comments"
     %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
@@ -45,14 +48,21 @@
         .row
           .span3
             %h1
-              = link_to :"Nindart", controller: :countries, action: :index
+              = link_to :"Nindart", controller: "/countries", action: :index
           .span7
             %h3.lead{:style => "font-size:20px;"}
               <b>Nindart</b> is BBS for <b>foreign student</b> living in Japan.
               %br
               First: Choose your country &nbsp; Second: Enjoy your conversation!
           .span2
-            Login
+            
+            &nbsp;
+            - if user_signed_in? == false 
+              = link_to "Sign up", new_user_registration_path, :class => "btn btn-primary"
+              = link_to "Login", new_user_session_path, :class => "btn btn-primary pull-right"
+            - else
+              = link_to "Logout", destroy_user_session_path, :class => "btn btn-primary pull-right", :method => :delete
+            
 
         .page-header
           .subnav
@@ -64,12 +74,12 @@
                     = render_crumbs 
 
               // 検索系
-              .span8.pull-right
-                %form{:style => "margin: 0;"}
-                  Search Country:
-                  %input#search.input-medium.search-query{:type => "text", :oninput => "search()", :onkeyup => "search()", :onblur => "search()", :placeholder => "Search"}
-                    //%button.btn{:type => "submit"}
-                    //  %i.icon-search
+              //.span8.pull-right
+              //  %form{:style => "margin: 0;"}
+              //    Search Country:
+              //    %input#search.input-medium.search-query{:type => "text", :oninput => "search()", :onkeyup => "search()", :onblur => "search()", :placeholder => "Search"}
+              //      //%button.btn{:type => "submit"}
+              //      //  %i.icon-search
 
       .well
         = bootstrap_flash

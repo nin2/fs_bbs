@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :list, :show]
   
   # GET /comments
   # GET /comments.json
@@ -51,8 +52,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /comments/post/:board_id
-  # GET /comments/post/:board_id.json
+  # POST /comments/post/:board_id
+  # POST /comments/post/:board_id.json
   def post
     @comment = Comment.new
     @comment.board_id = params[:board_id]
@@ -72,6 +73,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(params[:comment])
+    @comment.user_id = current_user.id
 
     respond_to do |format|
       if @comment.save
