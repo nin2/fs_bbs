@@ -43,50 +43,114 @@
     //      %a.btn.btn-navbar{:data_toggle => "collapse", "data-target" => ".nav-collapse"}
     //      %a.brand{:href => "../"} Title
 
+    // dialog form
+    = form_for User.new, :url=> user_session_path, :html => {:class => 'form-horizontal', :id => 'login-form', :title => 'Login' } do |f|
+      %p.validateTips All form fields are required.
+      //.control-group
+      //  = f.label :country_id, :class => 'control-label'
+      //  .controls
+      //    = @country.name
+      .control-group
+        = f.label :email, :class => 'control-label'
+        .controls
+          = f.text_field :email, :class => 'text_field text ui-widget-content ui-corner-all', :type => "text"
+      .control-group
+        = f.label :password, :class => 'control-label'
+        .controls
+          = f.password_field :password, :class => 'text_field text ui-widget-content ui-corner-all'
+      .form-actions{:style => "display:none"}
+        = f.submit nil, :class => 'btn btn-primary', :style => "display:none;", :id => "login_submit_button"
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), user_session_path, :class => 'btn', :style => "display:none;"
+
+
+    // dialog form
+    = form_for User.new, :url=> user_registration_path, :html => {:class => 'form-horizontal', :id => 'signup-form', :title => 'Sign up' } do |f|
+      %p.validateTips All form fields are required.
+      //.control-group
+      //  = f.label :country_id, :class => 'control-label'
+      //  .controls
+      //    = @country.name
+      .control-group
+        = f.label :username, :class => 'control-label'
+        .controls
+          = f.text_field :username, :class => 'text_field text ui-widget-content ui-corner-all', :type => "text"
+      .control-group
+        = f.label :email, :class => 'control-label'
+        .controls
+          = f.text_field :email, :class => 'text_field text ui-widget-content ui-corner-all', :type => "text"
+      .control-group
+        = f.label :password, :class => 'control-label'
+        .controls
+          = f.password_field :password, :class => 'text_field text ui-widget-content ui-corner-all'
+      .control-group
+        = f.label :password_confirmation, :class => 'control-label'
+        .controls
+          = f.password_field :password_confirmation, :class => 'text_field text ui-widget-content ui-corner-all'
+      .form-actions{:style => "display:none"}
+        = f.submit nil, :class => 'btn btn-primary', :style => "display:none;", :id => "signup_submit_button"
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), user_session_path, :class => 'btn', :style => "display:none;"
+
     .container
-      %header.jumbotron.subhead#overview
-        .row
-          .span3
-            %h1
-              = link_to :"Nindart", controller: "/countries", action: :index
-          .span7
-            %h3.lead{:style => "font-size:20px;"}
-              <b>Nindart</b> is BBS for <b>foreign student</b> living in Japan.
-              %br
-              First: Choose your country &nbsp; Second: Enjoy your conversation!
-          .span2
-            
-            &nbsp;
-            - if user_signed_in? == false 
-              = link_to "Sign up", new_user_registration_path, :class => "btn btn-primary"
-              = link_to "Login", new_user_session_path, :class => "btn btn-primary pull-right"
-            - else
-              = link_to "Logout", destroy_user_session_path, :class => "btn btn-primary pull-right", :method => :delete
-            
-
-        .page-header
-          .subnav
+      .row
+        .span10
+          %header.jumbotron.subhead#overview
             .row
-              .span4
-                %ul.nav.nav-pills
-                  // ぱんくずリストをここに書く
-                  %li
-                    = render_crumbs 
+              .span2
+                %h1
+                  = link_to :"Nindart", controller: "/countries", action: :index
+              .span6
+                %h3.lead{:style => "font-size:20px;"}
+                  <b>Nindart</b> is BBS for <b>foreign student</b> living in Japan.
+                  %br
+                  First: Choose your country &nbsp; Second: Enjoy your conversation!
+              .span2
+                - if user_signed_in? == false 
 
-              // 検索系
-              //.span8.pull-right
-              //  %form{:style => "margin: 0;"}
-              //    Search Country:
-              //    %input#search.input-medium.search-query{:type => "text", :oninput => "search()", :onkeyup => "search()", :onblur => "search()", :placeholder => "Search"}
-              //      //%button.btn{:type => "submit"}
-              //      //  %i.icon-search
+                  =# link_to "Sign up", new_user_registration_path, :class => "btn btn-primary"
+                  =# link_to "Login", new_user_session_path, :class => "btn btn-primary pull-right"
+                  <button class="btn btn-primary btn-small" id="signup-button">Sign up</button>
+                  <button class="btn btn-primary btn-small" id="login-button">Login</button>
+                - else
+                  = link_to "Logout", destroy_user_session_path, :class => "btn btn-primary pull-right", :method => :delete
+                
 
-      .well
-        = bootstrap_flash
-        = yield
+            .page-header
+              .subnav
+                .row
+                  .span4
+                    %ul.nav.nav-pills
+                      // ぱんくずリストをここに書く
+                      %li
+                        = render_crumbs 
 
-      %footer
-        %p &copy; Company 2012
+                  // 検索系
+                  //.span8.pull-right
+                  //  %form{:style => "margin: 0;"}
+                  //    Search Country:
+                  //    %input#search.input-medium.search-query{:type => "text", :oninput => "search()", :onkeyup => "search()", :onblur => "search()", :placeholder => "Search"}
+                  //      //%button.btn{:type => "submit"}
+                  //      //  %i.icon-search
+
+          .well
+            = bootstrap_flash
+            = yield
+
+          %footer
+            %p &copy; Company 2012
+        .span2
+          - 3.times do 
+            <script type="text/javascript"><!--
+            google_ad_client = "ca-pub-5847521257525332";
+            /* Nindart */
+            google_ad_slot = "7591904562";
+            google_ad_width = 160;
+            google_ad_height = 600;
+            //-->
+            </script>
+            <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+            </script>
+
     /
       Javascripts
       \==================================================

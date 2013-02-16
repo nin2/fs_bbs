@@ -4,4 +4,5 @@ class Comment < ActiveRecord::Base
   attr_accessible :content, :board_id
 
   validates :user_id, presence: true
+  validates :number, presence: true
 end

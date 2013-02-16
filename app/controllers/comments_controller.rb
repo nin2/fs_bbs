@@ -74,6 +74,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @comment.user_id = current_user.id
+    comment_number = Comment.count(:conditions => ["board_id = ?", @comment.board_id])
+    @comment.number = comment_number + 1
 
     respond_to do |format|
       if @comment.save

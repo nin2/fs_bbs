@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216083705) do
+ActiveRecord::Schema.define(:version => 20130216092909) do
 
   create_table "boards", :force => true do |t|
     t.integer  "country_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130216083705) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "number"
   end
 
   add_index "comments", ["board_id"], :name => "index_comments_on_board_id"
