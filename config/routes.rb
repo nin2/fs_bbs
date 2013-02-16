@@ -16,11 +16,11 @@ FsBbs::Application.routes.draw do
   match '/boards/list/:country_id' => 'boards#list', via: :get, as: :board_list
   match '/boards' => 'boards#create', via: :post
   match '/boards/:country_id' => 'boards#create', via: :post
-  match '/boards/:id' => 'boards#show', via: :get, as: :board
+  #match '/boards/:id' => 'boards#show', via: :get, as: :board
 
-  resources :countries, only: [:index, :show]
+  resources :countries, only: [:index]
 
-  resources :country_areas, only: [:index, :show]
+  resources :country_areas, only: [:index]
 
 
   # The priority is based upon order of creation:

@@ -111,6 +111,9 @@
                   <button class="btn btn-primary btn-small" id="signup-button">Sign up</button>
                   <button class="btn btn-primary btn-small" id="login-button">Login</button>
                 - else
+                  Hi,
+                  %b
+                  = current_user.username
                   = link_to "Logout", destroy_user_session_path, :class => "btn btn-primary pull-right", :method => :delete
                 
 
@@ -136,7 +139,10 @@
             = yield
 
           %footer
-            %p &copy; Company 2012
+            %p
+              &copy; 2012
+              = mail_to "taku@tomiflu.com", "Tomiflu"
+              All Rights Reserved.
         .span2
           - 3.times do 
             <script type="text/javascript"><!--
