@@ -5,7 +5,7 @@
 $ ->
     $('#dialog-form').dialog 
         autoOpen: false
-        height: 480
+        height: 400
         width: 600
         modal: true
         buttons:

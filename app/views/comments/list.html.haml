@@ -22,7 +22,7 @@
   .control-group
     = f.label :content, :class => 'control-label'
     .controls
-      = f.text_area :content, :class => 'text_field text ui-widget-content ui-corner-all', :type => "text", :style => "width:379px;height:280px;"
+      = f.text_area :content, :class => 'text_field text ui-widget-content ui-corner-all', :type => "text", :style => "width:379px;height:200px;"
   .form-actions{:style => "display:none"}
     = f.hidden_field :board_id, :value => params[:board_id] if params[:board_id] != nil
     = f.submit nil, :class => 'btn btn-primary', :style => "display:none;", :id => "post_comment_submit"
