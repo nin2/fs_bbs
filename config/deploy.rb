@@ -11,10 +11,10 @@ require 'capistrano_colors'
 require "bundler/capistrano"
 
 # RVM
-require "rvm/capistrano"
-#### RVMで利用するRubyのバージョンを設定(1.9.3を変更) ####
-set :rvm_ruby_string, '1.9.3'
-set :rvm_type, :user
+#require "rvm/capistrano"
+##### RVMで利用するRubyのバージョンを設定(1.9.3を変更) ####
+#set :rvm_ruby_string, '1.9.3'
+#set :rvm_type, :user
 
 # gitリポジトリの設定
 #### gitリポジトリをセット ####
