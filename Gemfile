@@ -43,11 +43,10 @@ gem "twitter-bootstrap-rails"
 gem "bootstrap-sass"
 gem "bootswatch-rails"
 
-gem "maxmertkit-rails"
 gem "kaminari"
 gem "crummy", "~> 1.7.0"
 gem "font-awesome-rails"
-gem "maxmertkit-rails"
+#gem "maxmertkit-rails"
 gem "kaminari"
 gem "carrierwave"
 
