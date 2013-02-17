@@ -72,3 +72,5 @@ group :development, :test do
     gem 'rb-fsevent', :require => false
 end
 
+gem 'google-analytics-rails'
+
