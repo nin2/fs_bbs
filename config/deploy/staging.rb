@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #### TEST_APPにアプリ名を登録 ####
-set :application, "TEST_APP_STAGING"
+set :application, "fs_bbs"
 
 # RVM
 #### rvmのパス 環境に合わせて変更　####
