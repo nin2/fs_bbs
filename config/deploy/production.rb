@@ -14,7 +14,7 @@ set :rails_env, "production"
 
 # デプロイ先のサーバの設定
 #### デプロイ先のサーバをセット ####
-server "107.23.172.167:80", :app, :web, :db, :primary => true
+server "107.23.172.167:10022", :app, :web, :db, :primary => true
 
 # bundle install条件
 set :bundle_flags, "--no-deployment --without test development"
