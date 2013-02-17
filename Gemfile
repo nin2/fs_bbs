@@ -70,6 +70,9 @@ group :development, :test do
     gem 'growl'
     gem 'guard-rspec'
     gem 'rb-fsevent', :require => false
+    gem 'capistrano'
+    gem 'capistrano-ext'
+    gem 'capistrano_colors'
 end
 
 gem 'google-analytics-rails'
