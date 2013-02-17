@@ -12,7 +12,7 @@ set :application, "TEST_APP_STAGING"
 #### デプロイ先のフォルダを設定　####
 set :deploy_to, "/var/www/fs_bbs/"
 #### デプロイする環境名をセット　####
-set :rails_env, "staging"
+set :rails_env, "production"
 
 # デプロイ先のサーバの設定
 server "107.23.232.95:10022", :app, :web, :db, :primary => true
