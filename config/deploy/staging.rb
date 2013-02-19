@@ -25,7 +25,7 @@ set :bundle_flags, ""
 # SSHユーザの設定
 #### USER_NAME, USER_GROUP, PASSWORD, KEYのパス, パスフレーズ、SSHのポート
 set :user, "ec2-user"
-set :user_group, "ec2-user"
+set :user_group, "apache"
 set :password, ""
 ssh_options[:keys] = %w(~/.ssh/nindart-staging.pem)
 ssh_options[:passphrase] = ""
