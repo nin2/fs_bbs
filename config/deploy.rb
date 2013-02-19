@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 set :default_stage, "production"
 
 # 複数環境にデプロイできるようにする
@@ -40,3 +41,4 @@ namespace :deploy do
 end
 before :deploy, "deploy:set_file_process_owner"
 after :deploy, "deploy:migrate"
+

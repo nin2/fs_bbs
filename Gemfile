@@ -55,6 +55,8 @@ gem "carrierwave"
 gem 'haml-rails'
 gem 'jquery-rails'
 
+gem 'capistrano-rbenv'
+
 
 # Automatic Test
 group :development, :test do
