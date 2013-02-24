@@ -75,5 +75,8 @@ group :development, :test do
     gem 'capistrano_colors'
 end
 
+# for SEO
 gem 'google-analytics-rails'
+gem 'meta-tags', :require => 'meta_tags'
+gem 'sitemap_generator'
 

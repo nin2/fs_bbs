@@ -34,6 +34,15 @@ set :normalize_asset_timestamps, false
 set :keep_releases, 10
 
 namespace :deploy do
+  desc "古いサイトマップの削除"
+  task :copy_old_sitemap do
+    run "if [ -e #{previous_release}/public/sitemap_index.xml.gz ]; then cp #{previous_release}/public/sitemap* #{current_release}/public/; fi"
+  end
+
+  desc "sitemapの更新"
+  task :refresh_sitemaps do
+    run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
+  end
   # Passengerの実行ユーザー/Groupをセット
   task :set_file_process_owner do
     sudo "chown -R #{user}:#{user_group} #{deploy_to}"
@@ -42,3 +51,6 @@ end
 before :deploy, "deploy:set_file_process_owner"
 after :deploy, "deploy:migrate"
 
+# sitemap
+after "deploy:update_code", "deploy:copy_old_sitemap"
+after :deploy, "deploy:refresh_sitemaps"

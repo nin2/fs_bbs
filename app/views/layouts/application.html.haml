@@ -17,8 +17,13 @@
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
     %link(href="favicon.ico" rel="shortcut icon")
 
-  %body
+    - set_meta_tags :site => content_for?(:title) ? yield(:title) : "Nindart", |
+      description: 'Nindart is BBS for foreign student living in Japan', |
+      keywords: 'Nindart, BBS, Foreign Student, communication', |
+      reverse: :true
+    = display_meta_tags  
 
+  %body
     // dialog form
     = form_for User.new, :url=> user_session_path, :html => {:class => 'form-horizontal', :id => 'login-form', :title => 'Login' } do |f|
       %p.validateTips All form fields are required.
