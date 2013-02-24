@@ -7,7 +7,7 @@ $ ->
         autoOpen: false
         height: 270
         width: 450
-        modal: true
+        modal: false
         buttons:
             "Login": ->
                bValid = true
@@ -26,7 +26,7 @@ $ ->
         autoOpen: false
         height: 370
         width: 470
-        modal: true
+        modal: false
         buttons:
             "Sign up": ->
                bValid = true

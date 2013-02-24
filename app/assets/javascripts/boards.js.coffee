@@ -7,7 +7,7 @@ $ ->
         autoOpen: false
         height: 230
         width: 450
-        modal: true
+        modal: false
         buttons:
             "New Board": ->
                bValid = true

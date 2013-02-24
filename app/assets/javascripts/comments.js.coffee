@@ -7,7 +7,7 @@ $ ->
         autoOpen: false
         height: 400
         width: 600
-        modal: true
+        modal: false
         buttons:
             "Post Comment": ->
                bValid = true
