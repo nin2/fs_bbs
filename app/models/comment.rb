@@ -5,4 +5,5 @@ class Comment < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :number, presence: true
+  validates :content, :length => { :maximum => 500 }
 end
