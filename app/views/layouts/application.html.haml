@@ -11,46 +11,17 @@
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
-    = javascript_include_tag "countries" if controller.controller_name == "countries"
-    = javascript_include_tag "boards" if controller.controller_name == "boards"
-    = javascript_include_tag "comments" if controller.controller_name == "comments"
     %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
     %link(href="favicon.ico" rel="shortcut icon")
 
-    :javascript
-      $(function() {
-        function search() {
-          $('tr').each(function() {
-            if($(this).text().indexOf($('#search').val()) == -1) {
-              $(this).css("display", "none");
-              $("+td", this).css("display", "none");
-            } else {
-              $(this).css("display", "block");
-              $("+td", this).css("display", "block");
-            }
-          });
-        }
-      });
-
-
   %body
-    //.navbar.navbar-fixed-top
-    //  .navbar-inner
-    //    .container
-    //      %a.btn.btn-navbar{:data_toggle => "collapse", "data-target" => ".nav-collapse"}
-    //      %a.brand{:href => "../"} Title
 
     // dialog form
     = form_for User.new, :url=> user_session_path, :html => {:class => 'form-horizontal', :id => 'login-form', :title => 'Login' } do |f|
       %p.validateTips All form fields are required.
-      //.control-group
-      //  = f.label :country_id, :class => 'control-label'
-      //  .controls
-      //    = @country.name
       .control-group
         = f.label :email, :class => 'control-label'
         .controls
@@ -67,10 +38,6 @@
     // dialog form
     = form_for User.new, :url=> user_registration_path, :html => {:class => 'form-horizontal', :id => 'signup-form', :title => 'Sign up' } do |f|
       %p.validateTips All form fields are required.
-      //.control-group
-      //  = f.label :country_id, :class => 'control-label'
-      //  .controls
-      //    = @country.name
       .control-group
         = f.label :username, :class => 'control-label'
         .controls
@@ -107,8 +74,6 @@
               .span2
                 - if user_signed_in? == false 
 
-                  =# link_to "Sign up", new_user_registration_path, :class => "btn btn-primary"
-                  =# link_to "Login", new_user_session_path, :class => "btn btn-primary pull-right"
                   <button class="btn btn-primary btn-small" id="signup-button">Sign up</button>
                   <button class="btn btn-primary btn-small" id="login-button">Login</button>
                 - else
@@ -127,13 +92,6 @@
                       %li
                         = render_crumbs 
 
-                  // 検索系
-                  //.span8.pull-right
-                  //  %form{:style => "margin: 0;"}
-                  //    Search Country:
-                  //    %input#search.input-medium.search-query{:type => "text", :oninput => "search()", :onkeyup => "search()", :onblur => "search()", :placeholder => "Search"}
-                  //      //%button.btn{:type => "submit"}
-                  //      //  %i.icon-search
 
           .well
             = bootstrap_flash
@@ -145,7 +103,7 @@
               = mail_to "ninja@nindart.com", "Ninja"
               All Rights Reserved.
         .span2
-          - 3.times do 
+          - 4.times do 
             <script type="text/javascript"><!--
             google_ad_client = "ca-pub-5847521257525332";
             /* Nindart */
@@ -163,3 +121,6 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
+    = javascript_include_tag "countries" if controller.controller_name == "countries"
+    = javascript_include_tag "boards" if controller.controller_name == "boards"
+    = javascript_include_tag "comments" if controller.controller_name == "comments"

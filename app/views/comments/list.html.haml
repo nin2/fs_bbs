@@ -1,4 +1,6 @@
 - model_class = Comment
+- content_for :title do
+  = @board.title + " board in " + @board.country.name + " - Nindart"
 .page-header
   .row
     .span6

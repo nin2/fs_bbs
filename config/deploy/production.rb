@@ -2,6 +2,8 @@
 #### TEST_APPにアプリ名を登録 ####
 set :application, "fs_bbs"
 
+#set :sudo_prompt, "bjXuB0O5pFxvygudNPmAAvaWiuu"
+
 # RVM
 #### rvmのパス 環境に合わせて変更　####
 #set :rvm_path, '/usr/local/rvm'
@@ -14,17 +16,17 @@ set :rails_env, "production"
 
 # デプロイ先のサーバの設定
 #### デプロイ先のサーバをセット ####
-server "107.23.172.167:10022", :app, :web, :db, :primary => true
+server "49.212.211.94:10022", :app, :web, :db, :primary => true
 
 # bundle install条件
 set :bundle_flags, "--no-deployment --without test development"
 
 # SSH
 #### USER_NAME, USER_GROUP, PASSWORD, KEYのパス, パスフレーズ、SSHのポート
-set :user, "ec2-user"
-set :user_group, "wheel"
+set :user, "nindart"
+set :user_group, "nindart"
 set :password, ""
-ssh_options[:keys] = %w(~/.ssh/nindart-key.pem)
+ssh_options[:keys] = %w(~/.ssh/nindart-vps/id_rsa)
 ssh_options[:passphrase] = ""
 ssh_options[:port] = "10022"
 
